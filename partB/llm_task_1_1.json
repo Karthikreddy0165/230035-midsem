@@ -1,0 +1,91 @@
+{
+  "student_metadata": {
+    "name": "Karthik Reddy",
+    "roll_number": "230035",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "task": "Task 1.1 — Core Contribution / Architecture",
+    "submission_date": "2026-03-12"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 1.1",
+      "purpose": "Understanding the relationship between input warping and covariance function validity",
+      "prompt": "The paper defines a causal GP by warping inputs h(t) = t * I(t > 0). But why does this particular warping preserve positive-definiteness of the covariance kernel? Is it because warping the inputs of any valid kernel produces a valid kernel, or is there something specific about this warping that matters? What if h(t) were non-monotonic — would the kernel still be PD?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Clarified that ANY input warping preserves PD-ness because k(h(x), h(y)) is PD whenever k is PD (composition of PD kernel with any function). The specific warping doesn't matter for validity, only for what behavior it encodes. Non-monotonic h would also preserve PD-ness but might not encode useful structure.",
+      "student_verification": "I verified this by checking Rasmussen & Williams (2006) Section 4.2 on kernel construction, which confirms that compositions of kernels with input transformations preserve positive-definiteness.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 1.1",
+      "purpose": "Understanding the paper's claim about equivalence of warping and filtering",
+      "prompt": "In Section 2.1, the paper says the time warping model y(t) = x(h(t)) and the linear filter model y(t) = integral of x(u) g(t,u) du are 'equivalent' for causal GPs. But the filter g(t,u) = delta(h(t) - u) seems like a tautology — it's just defining the filter to be the warping. What does this equivalence actually buy us theoretically? Is it just showing two ways to think about the same thing, or does the filtering view enable something the warping view doesn't?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Helped me understand that the filtering framework is more general — you could use non-instantaneous filters g(t,u) that model AR/MA dynamics (the paper mentions this at the end of Section 2.1). The warping is the special case of an instantaneous filter, but framing it as filtering opens the door to richer temporal models.",
+      "student_verification": "I re-read Section 2.1's final paragraph which explicitly says 'the filter g(t,u) can also express more complex relationships, such as AR or MA properties' — confirming that the filtering view is the more general framework.",
+      "confidence_level": 4,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 3,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 1.1",
+      "purpose": "Understanding why conditioning on fictitious observations fails for causal GP",
+      "prompt": "The paper says that conditioning on fictitious observations in the past to enforce flatness is 'theoretically and practically inappropriate' and cites Popov (2008). But I don't have access to Popov 2008 — can you explain intuitively why conditioning fails here? My guess is it has something to do with the GP posterior still being smooth through the conditioning points, but I want to understand this more deeply.",
+      "llm_response_used": "Yes",
+      "how_it_helped": "The key insight is that conditioning on finitely many past observations constrains the function at those specific points but NOT between them. The GP posterior can still wiggle between conditioning points. You'd need infinitely many conditioning points to enforce true flatness, which is computationally impossible. The warping approach achieves exact flatness with zero computational overhead.",
+      "student_verification": "I tested this intuition by sketching what a GP posterior looks like when conditioned on 10 equally-spaced points at y=0 — the posterior mean is pulled to zero at those points but oscillates between them, confirming the failure mode.",
+      "confidence_level": 4,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "The paper defines a causal GP by warping inputs h(t) = t * I(t > 0). But why does this particular warping preserve positive-definiteness of the covariance kernel?",
+      "why_important": "Essential for understanding the theoretical foundation — why the method is guaranteed to produce a valid GP, not just an arbitrary function."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 3,
+      "prompt": "Why is conditioning on fictitious observations 'theoretically and practically inappropriate' for enforcing causality?",
+      "why_important": "This eliminates the most obvious alternative to the paper's warping approach and reveals why the design choice is non-trivial."
+    },
+    {
+      "rank": 3,
+      "interaction_id": 2,
+      "prompt": "What does the equivalence between warping and filtering actually buy us theoretically?",
+      "why_important": "Shows the paper's method is a special case of a more general filtering framework, opening doors to future extensions."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Task 1.1.",
+    "understanding_acknowledged": true,
+    "signature": "Karthik Reddy",
+    "date": "2026-03-12"
+  }
+}
