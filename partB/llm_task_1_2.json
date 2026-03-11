@@ -1,0 +1,91 @@
+{
+  "student_metadata": {
+    "name": "Karthik Reddy",
+    "roll_number": "230035",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "task": "Task 1.2",
+    "submission_date": "2026-03-12"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 1.2",
+      "purpose": "Figuring out what counts as a paper-specific assumption vs generic ML assumption",
+      "prompt": "I need to find assumptions specific to this paper, not generic ones like iid data. The kernel in Eq 2 multiplies separate exponentials for each marker dimension. Does that mean it assumes the responses to different markers are independent of each other?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Clarified that the product kernel doesn't mean the responses are statistically independent — it means the covariance decomposes multiplicatively. The GP posterior can still capture correlations. But it does assume there's no non-linear interaction between markers in the kernel.",
+      "student_verification": "Checked Eq 2 and confirmed the kernel is a product of per-dimension terms, each with its own lengthscale.",
+      "confidence_level": 4,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 1.2",
+      "purpose": "Understanding the flatness assumption better",
+      "prompt": "If a neuron starts ramping up BEFORE a go cue (anticipatory activity), the causal GP forces that to be flat. Would the GP try to compensate by changing its hyperparameters, or is it structurally stuck?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "The warping h(t) = max(0,t) structurally prevents any gradient before the marker regardless of hyperparameters. The model can't learn its way out — it will just dump all pre-event variability into noise. That's a hard structural constraint.",
+      "student_verification": "This matches the paper's Figure 4C-D discussion where the acausal model adapts its lengthscale to pre-event data but the causal model cannot.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 3,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 1.2",
+      "purpose": "Finding the stationarity assumption",
+      "prompt": "The paper uses the same lengthscales l_k for all 20 trials. What if the response shape changes across trials — like if a patient is recovering and their responses get stronger over time? Can the model handle that?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Confirmed that shared lengthscales mean the model assumes the response characteristics are the same across all trials. Habituation or sensitization would violate this.",
+      "student_verification": "Verified in Eq 2 that l_k has no trial index — same lengthscales used everywhere.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "Does the product kernel in Eq 2 assume marker responses are independent?",
+      "why_important": "Helped me correctly state the separability assumption without overclaiming independence."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 2,
+      "prompt": "If there's anticipatory activity before a marker, can the causal GP compensate via hyperparameters?",
+      "why_important": "Made the flatness assumption violation scenario concrete and specific."
+    },
+    {
+      "rank": 3,
+      "interaction_id": 3,
+      "prompt": "What if response shape changes across trials — can shared lengthscales handle that?",
+      "why_important": "Led me to identify the stationarity assumption which wasn't obvious at first."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Task 1.2.",
+    "understanding_acknowledged": true,
+    "signature": "Karthik Reddy",
+    "date": "2026-03-12"
+  }
+}

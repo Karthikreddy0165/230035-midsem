@@ -1,0 +1,91 @@
+{
+  "student_metadata": {
+    "name": "Karthik Reddy",
+    "roll_number": "230035",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "task": "Task 3.2",
+    "submission_date": "2026-03-12"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 3.2",
+      "purpose": "Choosing a failure mode connected to my assumptions",
+      "prompt": "I identified exact markers, separable kernel, causal flatness, and stationarity as assumptions. Which one would give the clearest failure when violated? I want something I can easily construct and that shows up clearly in RMSE.",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Noisy markers (violating Assumption 1) is the best choice because it's easy to construct, the causal model is especially sensitive due to the hard boundary, and the paper itself mentions marker sensitivity as a caveat in Section 3.2.",
+      "student_verification": "Section 3.2 says 'the causal model is not invariant to shifts in the time-markers' and 'our tests with this indicate a higher error.'",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 3.2",
+      "purpose": "Designing the experiment",
+      "prompt": "Should I just test one noisy marker setting, or sweep across multiple noise levels to show how performance degrades? A sweep would be more convincing but takes more compute.",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Sweep is more compelling — plot RMSE vs noise for both causal and acausal to show the causal model degrades faster. Estimated about 6 minutes total runtime.",
+      "student_verification": "Each run takes ~30s, 6 noise levels x 2 models = 12 runs, ~6 minutes total. Feasible.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 3,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 3.2",
+      "purpose": "Finding a fix suggestion",
+      "prompt": "What's a simple one-line fix for the noisy marker problem? I was thinking of treating markers as latent variables, but that sounds too complex to suggest. Is there something simpler?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Replace h(t) = max(0,t) with a soft sigmoid: h(t) = t * sigmoid(beta*t). Sharpness beta can be learned. When beta is large it recovers the hard boundary; when small it's more tolerant of marker noise.",
+      "student_verification": "Verified that t * sigmoid(beta*t) approaches max(0,t) as beta -> infinity, so it's a proper generalization.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "Which assumption violation gives the clearest failure?",
+      "why_important": "Chose the failure mode strategy."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 2,
+      "prompt": "Should I test one noise level or sweep?",
+      "why_important": "Led to the degradation curve which is much more convincing."
+    },
+    {
+      "rank": 3,
+      "interaction_id": 3,
+      "prompt": "What's a simple fix I can suggest in one sentence?",
+      "why_important": "Directly needed for the suggested modification."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Task 3.2.",
+    "understanding_acknowledged": true,
+    "signature": "Karthik Reddy",
+    "date": "2026-03-12"
+  }
+}

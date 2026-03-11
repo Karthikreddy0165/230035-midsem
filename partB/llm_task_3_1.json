@@ -1,0 +1,91 @@
+{
+  "student_metadata": {
+    "name": "Karthik Reddy",
+    "roll_number": "230035",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "task": "Task 3.1",
+    "submission_date": "2026-03-12"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 3.1 Component 1",
+      "purpose": "Deciding which components to ablate",
+      "prompt": "The paper has two main ideas: time-marked inputs and causal warping. If I remove each one separately, is that a good ablation design? Or should I pick less obvious things?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Confirmed these are the two most meaningful ablations since they are the paper's two core contributions. The paper's own Table 1 implicitly does this comparison across its columns.",
+      "student_verification": "Checked Table 1 — columns correspond to exactly these combinations (standard GP = both removed, acausal = no warping, causal = both present).",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 3.1 Component 1",
+      "purpose": "Understanding why causal advantage is small sometimes",
+      "prompt": "In the paper's Table 1, sometimes causal is only slightly better than acausal (like 53.9 vs 52.6 for traffic). Why is the gap sometimes small?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "When pre-event data is relatively quiet, the acausal model doesn't overfit much and approximates the causal model. The causal advantage is biggest when pre-event data is noisy (like neural data: 19.4 vs 15.7).",
+      "student_verification": "The neural data description says it's 'highly noisy' which matches the largest causal advantage.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 3,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 3.1 Component 2",
+      "purpose": "Interpreting the ablation magnitudes",
+      "prompt": "If removing time-marking hurts RMSE way more than removing causality, can I say time-marking is the more important contribution? Or is that comparing apples to oranges since they remove different amounts of model complexity?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Valid comparison but should be framed carefully — time-marking is foundational and causality builds on top of it. Better to say 'time-marking is the foundational contribution' rather than just 'more important.'",
+      "student_verification": "The paper introduces time-marking first (Section 2) and builds causality on top (Section 2.1), supporting this hierarchy.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "Should I ablate the two core contributions or pick less obvious components?",
+      "why_important": "Determined the ablation strategy."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 2,
+      "prompt": "Why is the causal advantage sometimes small in Table 1?",
+      "why_important": "Helped interpret my own ablation results."
+    },
+    {
+      "rank": 3,
+      "interaction_id": 3,
+      "prompt": "Can I say time-marking is more important based on the RMSE magnitudes?",
+      "why_important": "Guided my interpretation paragraph to make valid claims."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Task 3.1.",
+    "understanding_acknowledged": true,
+    "signature": "Karthik Reddy",
+    "date": "2026-03-12"
+  }
+}

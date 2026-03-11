@@ -1,0 +1,112 @@
+{
+  "student_metadata": {
+    "name": "Karthik Reddy",
+    "roll_number": "230035",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "task": "Task 2.2",
+    "submission_date": "2026-03-12"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 2.2",
+      "purpose": "Understanding cross-trial kernel computation",
+      "prompt": "When computing the kernel between two trials, each trial has its own markers. So for trial 1's observation at time t=0.3 and trial 2's observation at t=0.5, do I use trial 1's markers for the first point and trial 2's markers for the second? That's what Eq 1 seems to say with the (p) and (q) superscripts.",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Confirmed yes — each observation uses its own trial's markers. The superscripts (p) and (q) in Eq 1 mean each point keeps its own trial's marker context.",
+      "student_verification": "Re-read the sentence after Eq 1: 'superscripts p and q indicate data points come from two possibly different time series observations.'",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 2.2",
+      "purpose": "Fixing Cholesky crash",
+      "prompt": "My code is crashing with LinAlgError on Cholesky decomposition. I think it's because the causal warping maps a bunch of pre-event points to the same input (0,0), making the kernel matrix singular. How do I fix this without messing up the model?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "The noise variance term sigma_n^2 * I is part of the actual GP model, not just a numerical hack. As long as noise_var stays reasonable during optimization, it regularizes the matrix. I just need to make sure the optimizer doesn't drive noise_var too close to zero.",
+      "student_verification": "Added noise_var initialization at 0.1 and verified Cholesky succeeds. The identical-input points get nearly identical predictions, which is correct.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 3,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 2.2",
+      "purpose": "Optimizing hyperparameters",
+      "prompt": "Should I optimize lengthscales directly or in log space? And why does the paper use multiple random restarts?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Log space prevents negative values and makes the optimization landscape more uniform — a doubling from 0.1 to 0.2 has the same step size as 1.0 to 2.0. Multiple restarts help avoid local optima in the marginal likelihood.",
+      "student_verification": "Tried both — log space converges much more reliably.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 4,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 2.2",
+      "purpose": "Structuring the code",
+      "prompt": "How should I organize the GP code into functions? I need input transformation, warping, kernel, prediction, and LOOCV. What's a clean way to pass hyperparameters around?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Suggested a dictionary for hyperparameters and separate functions for each component. Clean and easy to swap between model variants.",
+      "student_verification": "Implemented this structure and it works across all three model variants.",
+      "confidence_level": 5,
+      "code_used_verbatim": true,
+      "student_modification": "Changed the parameter dictionary to separate standard GP params (lengthscales_std) from time-marked params (lengthscales) since they have different dimensions."
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "Do I use each trial's own markers when computing cross-trial kernel blocks?",
+      "why_important": "Getting this wrong would completely break the implementation."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 2,
+      "prompt": "My Cholesky is crashing because causal warping creates identical inputs — how to fix?",
+      "why_important": "Critical debugging issue that blocked all GP inference."
+    },
+    {
+      "rank": 3,
+      "interaction_id": 3,
+      "prompt": "Should I optimize in log space? Why multiple restarts?",
+      "why_important": "Practical choice that affects optimization reliability."
+    },
+    {
+      "rank": 4,
+      "interaction_id": 4,
+      "prompt": "How to organize the GP code into clean functions?",
+      "why_important": "Set the code architecture used across all notebooks."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Task 2.2.",
+    "understanding_acknowledged": true,
+    "signature": "Karthik Reddy",
+    "date": "2026-03-12"
+  }
+}

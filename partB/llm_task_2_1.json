@@ -1,0 +1,70 @@
+{
+  "student_metadata": {
+    "name": "Karthik Reddy",
+    "roll_number": "230035",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "task": "Task 2.1",
+    "submission_date": "2026-03-12"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 2.1",
+      "purpose": "Designing the synthetic dataset",
+      "prompt": "I need to make synthetic data for the time-marked GP paper. What kind of ground truth function should I use that is causal (flat before events, reacts after)? Something like a bump or spike after each marker?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Suggested an exponential bump: f(t) = A * (t-m) * exp(-lambda*(t-m)) for t > m, 0 otherwise. This gives a flat-then-spike-then-decay shape that matches the paper's causal assumption.",
+      "student_verification": "I checked that this function has zero derivative before the marker, matching the causal GP definition in Section 2.1.",
+      "confidence_level": 5,
+      "code_used_verbatim": true,
+      "student_modification": "Changed amplitude and decay parameters (A=3.0, lambda=15 for marker 1; A=2.0, lambda=20 for marker 2) to make the two responses visually distinct. Changed noise from 0.5 to 0.3."
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 2.1",
+      "purpose": "Checking if dataset size is enough",
+      "prompt": "Is N=20 trials with T=50 time points enough for GP to learn? The kernel matrix will be 1000x1000. Will Cholesky work on my laptop for this size?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Confirmed 1000x1000 Cholesky takes about 0.2 seconds — totally feasible. And 50 time points gives enough resolution to see the response shape.",
+      "student_verification": "Tested with np.linalg.cholesky on a random 1000x1000 PD matrix, took about 0.2s.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "What kind of ground truth function should I use for causal time-marked data?",
+      "why_important": "Set the foundation for all experiments since every notebook uses this synthetic data."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 2,
+      "prompt": "Is N=20, T=50 enough and will it run on my laptop?",
+      "why_important": "Needed to confirm feasibility before committing to the dataset design."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Task 2.1.",
+    "understanding_acknowledged": true,
+    "signature": "Karthik Reddy",
+    "date": "2026-03-12"
+  }
+}

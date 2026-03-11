@@ -1,0 +1,70 @@
+{
+  "student_metadata": {
+    "name": "Karthik Reddy",
+    "roll_number": "230035",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "task": "Task 4.2",
+    "submission_date": "2026-03-12"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-12",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 4.2",
+      "purpose": "Understanding the JSON format",
+      "prompt": "Part B adds task_tag, code_used_verbatim, and student_modification fields. For task_tag, can I use things like 'Task 3.1 Component 1'? And if I modified LLM code before using it, is code_used_verbatim true or false?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Detailed task tags are fine. If I modified the code at all, code_used_verbatim should be false. Only set true if I copied code exactly as the LLM gave it.",
+      "student_verification": "Re-read the exam table which says 'true if any LLM-generated code was copied without modification.'",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-12",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 4.2",
+      "purpose": "Selecting top 5 prompts",
+      "prompt": "For the top 5 prompts, should I pick the most technical ones or the ones that actually helped me the most? Some simple questions had more impact on my work than complex ones.",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Pick based on impact rather than complexity. A simple prompt that shaped the whole code architecture matters more than a tangential theoretical question.",
+      "student_verification": "Reviewed all my top_5_prompts selections across all files to ensure they reflect actual impact.",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "What do the new Part B JSON fields mean? When is code_used_verbatim true vs false?",
+      "why_important": "Got the format right to avoid losing marks on structure."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 2,
+      "prompt": "Should I pick most technical or most impactful prompts for top 5?",
+      "why_important": "Guided prompt selection across all 10 files."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Task 4.2.",
+    "understanding_acknowledged": true,
+    "signature": "Karthik Reddy",
+    "date": "2026-03-12"
+  }
+}

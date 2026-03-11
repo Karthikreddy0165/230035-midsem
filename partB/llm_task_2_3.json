@@ -1,0 +1,70 @@
+{
+  "student_metadata": {
+    "name": "Karthik Reddy",
+    "roll_number": "230035",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "task": "Task 2.3",
+    "submission_date": "2026-03-12"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 2.3",
+      "purpose": "Discussing performance gap with paper",
+      "prompt": "My RMSE numbers are in completely different units than the paper's Table 1 (they report in cars/hr). How should I present the comparison honestly without it looking like I failed?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Focus on the relative ordering — does causal beat acausal beat standard? If the ranking matches, the qualitative finding is reproduced even if absolute numbers differ. The different dataset explains the absolute gap.",
+      "student_verification": "The exam rubric says 'do not present a performance gap as a failure' and 'grading rewards accurate reasoning and transparency.'",
+      "confidence_level": 5,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-11",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 2.3",
+      "purpose": "Visualization design",
+      "prompt": "How should I make a Figure 4 style plot from the paper? I don't have clipping so I need a different layout. Should I show one trial or aggregate?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Suggested 2x2 layout: averaging, acausal TM-GP, causal TM-GP, and a bar chart. Single trial shows features best.",
+      "student_verification": "Paper also shows a single trial in Figure 4.",
+      "confidence_level": 5,
+      "code_used_verbatim": true,
+      "student_modification": "Changed to use my data arrays, added vertical marker lines, adjusted colors and font sizes."
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "My RMSE numbers are in different units than the paper — how to present honestly?",
+      "why_important": "Directly guides the required performance gap discussion."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 2,
+      "prompt": "How to make a Figure 4 style plot without clipping?",
+      "why_important": "Shaped the required visualization."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Task 2.3.",
+    "understanding_acknowledged": true,
+    "signature": "Karthik Reddy",
+    "date": "2026-03-12"
+  }
+}

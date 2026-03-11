@@ -1,0 +1,70 @@
+{
+  "student_metadata": {
+    "name": "Karthik Reddy",
+    "roll_number": "230035",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "task": "Task 4.1",
+    "submission_date": "2026-03-12"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-12",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 4.1",
+      "purpose": "Organizing the report",
+      "prompt": "I need to write a 4 page report covering 5 sections. How should I split the space? I usually overwrite on technical parts and underwrite on reflection.",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Suggested roughly equal space since all sections carry equal marks. Give extra attention to the reflection section since it's the hardest to write well and most differentiating.",
+      "student_verification": "All 5 report sections are 3 marks each, so equal weight makes sense.",
+      "confidence_level": 4,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-12",
+      "tool_name": "Gemini",
+      "model": "Gemini 2.5 Pro",
+      "task_tag": "Task 4.1",
+      "purpose": "Condensing my method description for the report",
+      "prompt": "Help me summarize the step-by-step method description from Task 1.1 into one short paragraph for the report. It needs to hit the key points: input transformation, time-marked kernel, causal warping, GP inference.",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Provided a draft structure. I then rewrote it in my own words based on my implementation experience.",
+      "student_verification": "The final paragraph includes implementation insights that only come from having built the code.",
+      "confidence_level": 4,
+      "code_used_verbatim": false,
+      "student_modification": ""
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "How should I split 4 pages across the 5 report sections?",
+      "why_important": "Ensured balanced coverage."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 2,
+      "prompt": "Help me condense my method description into one paragraph for the report.",
+      "why_important": "Writing concisely within 4 pages requires summarization help."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Task 4.1.",
+    "understanding_acknowledged": true,
+    "signature": "Karthik Reddy",
+    "date": "2026-03-12"
+  }
+}
